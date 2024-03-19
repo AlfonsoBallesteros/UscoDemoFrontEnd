@@ -1,0 +1,19 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Teléfono</th>
+    <th>Correo electrónico</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let supplier of suppliers">
+    <td>{{ supplier.name }}</td>
+    <td>{{ supplier.address }}</td>
+    <td>{{ supplier.phoneNumber }}</td>
+    <td>{{ supplier.email }}</td>
+  </tr>
+  </tbody>
+</table>
+

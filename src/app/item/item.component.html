@@ -1,0 +1,68 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Precio de compra</th>
+    <th>Precio de venta</th>
+    <th>Stock</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of items">
+    <td>{{ item.name }}</td>
+    <td>{{ item.description }}</td>
+    <td>{{ item.buyPrice }}</td>
+    <td>{{ item.salePrice }}</td>
+    <td>{{ item.stock }}</td>
+    <td>
+      <button type="button" class="btn btn-danger">Eliminar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="menssage" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>¡Éxito!</strong> Item guardado correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input type="text" class="form-control" id="name"  name="name" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <textarea class="form-control" id="description" name="description" ngModel></textarea>
+  </div>
+  <div class="form-group">
+    <label for="buyPrice">Precio de compra</label>
+    <input type="number" class="form-control" id="buyPrice" name="buyPrice" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="salePrice">Precio de venta</label>
+    <input type="number" class="form-control" id="salePrice" name="salePrice" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="stock">Stock</label>
+    <input type="number" class="form-control" id="stock" name="stock" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="supplierId">Proveedor</label>
+    <select class="form-control" id="supplierId" name="supplierId" ngModel>
+      <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="categoryId">Categoría</label>
+    <select class="form-control" id="categoryId" name="categoryId" ngModel>
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+
